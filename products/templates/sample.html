@@ -1,0 +1,38 @@
+{% extends 'base.html '%}
+{% load staticfiles %}
+{% block title %} MyBestPrice | All Products{% endblock %}
+{% block content %}
+
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <i class="icon-user page-title-icon"></i>
+                <h2>All Products/</h2>
+                <p>A view of all products</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio portfolio-page container">
+    <div class="row">
+        <ul class="portfolio-img">
+        {% for product in products %}
+            <li class="span3">
+                <div class="work">
+                 {% for item in product.product_image_set.all %}
+                        <img src="{{ MEDIA_URL }}{{ item.image }}" alt="">
+                {% endfor %}
+                    <h4>{{product.title}}</h4>
+                    <p>{{product.description|truncatewords:15}}</p>
+                    <a href="{% url 'Product_Detail' product.id %}" class="btn btn-danger">View</a>
+                    <a href="{% url 'update_cart' product.id %}" class="btn btn-primary">Add to shopping List</a>
+                </div>
+            </li>
+            {% cycle "" "" " </ul> <br/><hr/> <ul class= 'portfolio-img'>" %}
+            {% endfor%} 
+        </ul>
+    </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}Register {% endblock %}
+{% block content %} 
+
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <i class="icon-user page-title-icon"></i>
+                <h2>Register/</h2>
+                <p>Register for a New Account with Us</p>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="container">
+    <div class="row">
+    	<div class="form-control" class="col-md-6">
+			<form method="post" action="" >
+			{% csrf_token %}
+
+			{{form| crispy}}
+			<button class="btn btn-primary" value="submit" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

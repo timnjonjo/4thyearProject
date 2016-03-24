@@ -1,0 +1,79 @@
+{% extends 'base.html '%}
+{% load static from staticfiles %}
+{% block title %} MyBestPrice | All Products{% endblock %}
+{% block content %}
+
+{% if Empty %}
+<br>
+</hr>
+ <h1>{{ empty_message }}</h1>
+
+{% else %}
+<div class="page-title" style="padding: 10px 0 10px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <i class="icon-user page-title-icon"></i>
+                <h2>myCart</h2>
+             </div>
+
+<!-- 
+select name="movie">
+    {% for store in stores.all %}
+        {% ifequal store.id selected_store.id %}
+            <option value="{{store.key}}" selected="selected">{{ item}}</option>
+        {% else %}
+            <option value="{{store.key}}"> {{item}}</option>
+        {% endifequal %}
+    {% endfor %} -->
+
+
+			<form method="" action="">
+           		<div class="span8 form-control">
+                <h2> Select Store/Supermarket: </h2>
+           
+                <select id="Store" name="selected_store" style="margin-bottom:0px;">
+					<option>------------------------------------</option>
+					{% for item in stores.all %}
+					<option value="{{item.id}}" >{{item}}</option>
+					{% endfor %}
+				</select>
+				<button class="btn btn-primary"  type="submit" value="submit">Go</button>
+            </div>
+
+           </form>
+        </div>
+    </div>
+</div> 
+
+
+<div class="portfolio container" style="margin-top: 5px;">
+	<div class="row">
+		<table class="table table-striped">
+		<thead> <th>Item/Product</th>
+		<th> Quantity</th>
+		<th> Price</th>
+		</thead> 
+		<tfoot> <td></td> <td >Total:</td><td style="font-size: 20px; color: black;">{{cart.total}}</td><td></td></tfoot>
+		{% for item in cart.cartitem_set.all %}
+			<tr> 
+			<td>{{item.product}}</td>
+			<td>{{item.quantity}}</td>
+			<td>
+			{{item.price}}
+			</td>
+			<td>Remove</td>
+			</tr>
+			
+		{% endfor %}
+		</table>
+	</div>
+		<div class="row" style="background-color: #efecec;">
+			<div class="span12 center" >	
+			<h3 style="font-family: 'Lobster', cursive; color: rgb(66, 59, 65);">Your are now shopping in :{{thestore}}</h3>
+			</div>
+		</div>
+</div>
+
+{% endif %}
+{% endblock %}

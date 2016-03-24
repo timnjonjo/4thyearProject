@@ -1,0 +1,34 @@
+{% extends 'base.html '%}
+{% load static from staticfiles %}
+{% block title %} MyBestPrice | All Products{% endblock %}
+{% block content %}
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <i class="icon-user page-title-icon"></i>
+                <h2>All Producs/</h2>
+                <p>A view of all products</p>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="row" style="margin-left:10%; margin-right:10%;">
+<div class="row">
+	
+		{% for product in products %}
+        <div class="card span3">
+        {{product.product_image_set.all}}
+            <div class="card-block">
+                <h4 class="card-title">{{product.title}}</h4>
+                    <p class="card-text">{{product.description|truncatewords:20}}</p>
+                <a href="#" class="btn btn-primary">Add to shopping List</a>
+                 </div>
+        </div>
+
+        {% cycle "" "" "" " </div> <br/><hr/><div class= 'row'>" %}
+		{% endfor%}	
+	</div>
+
+</div>
+{% endblock%}
