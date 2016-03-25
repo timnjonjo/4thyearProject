@@ -53,12 +53,15 @@
                 </li>
                         {% if user.is_authenticated %}
                     
-                <li class="{% if request.resolver_match.url_name == "login" %} current-page {% endif %}">
-                        <a href="/accounts/login"><i class="icon-user"></i><br />Logout</a>
+                <li class="{% if request.resolver_match.url_name == "auth_logout" %} current-page {% endif %}">
+                        <a href="/accounts/logout"><i class="icon-user"></i><br />Logout</a>
                     </li>
                         {% else %}
-                <li class="{% if request.resolver_match.url_name == "login" %} current-page {% endif %}">       
-                <a href="/accounts/logout"><i class="icon-user"></i><br />Login</a>
+                <li class="{% if request.resolver_match.url_name == "auth_login" %} current-page {% endif %}">
+                <a href="/accounts/login"><i class="icon-user"></i><br />Login</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == "auth_register" %} current-page {% endif %}">
+                <a href="/accounts/register"><i class="icon-user"></i><br />Register</a>
                 </li>
                         {% endif %}
 

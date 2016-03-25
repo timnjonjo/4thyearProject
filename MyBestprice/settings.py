@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'registration',
     'bootstrap3',
     'crispy_forms',
     'products',
@@ -89,7 +91,18 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
+
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_ACTIVATION_DAYS = 1
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'tls://smtp.gmail.com'
+EMAIL_HOST_USER = 'jujuman7506@gmail.com'
+EMAIL_HOST_PASSWORD = 'misinafuture'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'jujuman7506@gmail.com'
 
 LANGUAGE_CODE = 'en-us'
 

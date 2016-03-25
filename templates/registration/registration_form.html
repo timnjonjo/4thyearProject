@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="portfolio portfolio-page container">
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span6 offset3">
+                <i class="icon-user page-title-icon"></i>
+                <h2>Register/</h2>
+                <p>Register to Enjoy services</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='row'>
+<div class='span6 offset3' style=" border-radius: 15px;
+    							border: 2px solid #BDBDBD;
+    							padding: 20px;
+								margin-top: 10px;">
+<form method="post" action=".">
+<legend>Registration Form</legend>
+  {% csrf_token %}
+  {{ form|crispy }}
+
+  <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Join' %}" />
+</form>
+</div>
+</div>
+
+<hr/>
+<div class='row'>
+<div class='text-align-center'>
+<p>Need to <a href="{% url 'auth_login' %}">Login</a>?</p>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

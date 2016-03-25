@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="portfolio portfolio-page container">
+<div class='row'>
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <i class="icon-user page-title-icon"></i>
+                <h2>Login/</h2>
+                <p>Please Login to continue with our services</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='widget span6 offset3' style=" border-radius: 15px;
+    							border: 2px solid #BDBDBD;
+    							padding: 20px;
+								margin-top: 10px;">
+
+<form method="post" action=".">
+<legend>Login</legend>
+  {% csrf_token %}
+  {{ form|crispy }}
+
+  <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Submit' %}" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+
+</div>
+<hr/>
+<div class='row'>
+<div class='text-align-center'>
+<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+</div>
+</div>
+</div>
+
+{% endblock %}

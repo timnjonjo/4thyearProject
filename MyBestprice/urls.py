@@ -24,15 +24,14 @@ urlpatterns = [
     url(r'^cart/', include('cart.urls')),
 	url(r'^$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    
-
+    url(r'^accounts/', include('registration.backends.default.urls')),
 
 
     #user authentication urls
-    url(r'^accounts/register/', views.register_user, name='register'),
-    url(r'^accounts/login/', views.login, name='login'),
-    url(r'^accounts/auth', views.auth_view),
-    url(r'^accounts/logout', views.logout),
+    # url(r'^accounts/register/', views.register_user, name='register'),
+    # url(r'^accounts/login/', views.login, name='login'),
+    # url(r'^accounts/auth', views.auth_view),
+    # url(r'^accounts/logout', views.logout),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # if settings.DEBUG:
 #     urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

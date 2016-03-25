@@ -10,7 +10,7 @@ def all_products(request):
 	context = {"products":products}
 	return render ( request, template, context)
 
-
+@login_required
 def product_detail(request, id):
 	product= Product.objects.get(id=id)
 	template = 'product_detail.html'
